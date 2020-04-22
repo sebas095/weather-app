@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { GeolocationService } from "./services/geolocation.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.sass"],
 })
 export class AppComponent {
-  title = 'weather-app';
+  title = "weather-app";
+
+  constructor(public geolocationService: GeolocationService) {}
+
+  ngOnInit() {}
 }
