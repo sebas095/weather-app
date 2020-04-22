@@ -6,6 +6,7 @@ export interface Weather {
   temp?: number;
   main?: string;
   minMaxTemp?: MinMaxInterface;
+  date?: string;
 }
 
 interface MinMaxInterface {

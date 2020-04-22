@@ -36,6 +36,10 @@ export class ForecastService {
       const month = date.getMonth() + 1;
       const day = date.getDate();
       const key = `${month}-${day}`;
+      const tempDay = new Intl.DateTimeFormat("es-CO", {
+        month: "long",
+        day: "numeric",
+      }).format(new Date(date));
 
       let tempPerDay: Weather = minMaxPerDay[key] || {
         minMaxTemp: {},
@@ -45,6 +49,7 @@ export class ForecastService {
         const source = weatherObject.weather[0];
         tempPerDay = { ...tempPerDay, ...source };
         tempPerDay.name = data.city.name;
+        tempPerDay.date = tempDay;
       }
 
       if (
@@ -72,7 +77,7 @@ export class ForecastService {
     const args: string = `?lat=${lat}&lon=${lon}&&appid=${environment.key}&units=metric`;
     let url: string = this.endPoint + args;
 
-    if (isDevMode) {
+    if (isDevMode()) {
       url = "assets/forecast.json";
     }
 

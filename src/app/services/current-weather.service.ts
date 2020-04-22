@@ -43,7 +43,7 @@ export class CurrentWeatherService {
     const args: string = `?lat=${lat}&lon=${lon}&&appid=${environment.key}&units=metric`;
     let url: string = this.endPoint + args;
 
-    if (isDevMode) {
+    if (isDevMode()) {
       url = "assets/weather.json";
     }
 

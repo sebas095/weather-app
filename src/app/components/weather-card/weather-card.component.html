@@ -3,10 +3,16 @@
     <app-weather-icon code={{weather.id}}></app-weather-icon>
   </div>
 
-  <div class="temp" *ngIf="weather.temp">
+  <div class="temp" *ngIf="weather.temp; else date">
     <p>Temperatura</p>
     <p class="big">{{weather.temp}}°</p>
   </div>
+
+  <ng-template #date>
+    <div class="temp">
+      <p class="big2">{{weather.date}}</p>
+    </div>
+  </ng-template>
 
   <div class="low-temp" *ngIf="weather.minMaxTemp">
     {{weather.minMaxTemp.min}}°
